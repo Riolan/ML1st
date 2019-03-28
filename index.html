@@ -1,0 +1,35 @@
+<html>
+  <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+<script> 
+function setup() {
+  createCanvas(840, 840);
+  background("white");
+}
+function draw() {
+  if (mouseIsPressed) {
+	strokeWeight(40);
+ 	 point(mouseX, mouseY);
+	}
+}
+function custom_save() {
+	var c = $('#defaultCanvas0');
+	var imageData = c[0].toDataURL('image/png');
+	var x = new XMLHttpRequest();
+	x.open("POST", "http://127.0.0.1:4443");
+	x.send(imageData);
+}
+
+function display_number() {
+	var x = new XMLHttpRequest();
+	x.open("GET", "http://127.0.0.1:4333")
+}
+
+</script>
+  </head>
+  <body style="background-color: black;">
+	<button onclick="custom_save()" style="background-color: #4CAF50;  border: none;  color: white;  padding: 16px 32px;  text-align: center;  text-decoration: none;  display: inline-block;  font-size: 16px; margin: 4px 2px;">Save</button>
+  </body>
+</html>
